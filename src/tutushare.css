@@ -1,0 +1,49 @@
+.tutubanner {
+  width: 100%;
+  margin-bottom: 1.4em;
+  background: #ebb5b3;
+  z-index: 100;
+}
+.btn-tutushare {
+  color: #fff;
+  background-color: #ee5d17;
+  border-color: #fff;
+}
+
+.btn-tutushare:hover {
+  background-color: #ebb5b3;
+  color: #ee5d17;
+}
+.tutu-brand {
+  margin-left: 1rem;
+}
+
+h1,
+h3,
+h5 {
+  font-family: Monsteratt;
+  color: #ee5d17;
+}
+
+p {
+  font-family: Monsteratt;
+  font-size: medium;
+  color: grey;
+}
+
+.body-tutu {
+  background-color: #eeeeee;
+}
+
+.header-tutu {
+  text-align: center;
+}
+.main-tutu {
+  padding-left: 2em;
+}
+table.tutuTable {
+  margin-left: auto;
+  margin-right: auto;
+  border-spacing: 40px;
+  border-collapse: separate;
+}
