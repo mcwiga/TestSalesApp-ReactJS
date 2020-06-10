@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./tutushare.css";
 import NavBar from "./components/tutuNavbar/navbar";
 import Trial7d from "./components/sevenDayTrial/trial7d";
+import Pricing_table from "./components/Pricing-table/Pricing-table";
 
 class App extends Component {
   state = {
@@ -15,12 +16,16 @@ class App extends Component {
           <div>
             <NavBar />
           </div>
+          
           <div className="header-tutu">
             <h1>Welcome to TutuShare</h1>
             <p>Hello world</p>
           </div>
           <div>
             <table class="tutuTable">
+            <div>
+            <Pricing_table/>
+          </div>
               <tr>
                 <td>
                   <Trial7d />

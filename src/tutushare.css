@@ -6,13 +6,13 @@
 }
 .btn-tutushare {
   color: #fff;
-  background-color: #ee5d17;
+  background-color: #f45336;
   border-color: #fff;
 }
 
 .btn-tutushare:hover {
   background-color: #ebb5b3;
-  color: #ee5d17;
+  color: #f45336;
 }
 .tutu-brand {
   margin-left: 1rem;
@@ -22,7 +22,7 @@ h1,
 h3,
 h5 {
   font-family: Monsteratt;
-  color: #ee5d17;
+  color: #f45336;
 }
 
 p {
