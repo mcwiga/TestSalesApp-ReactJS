@@ -20,7 +20,7 @@ class App extends Component {
             <p>Hello world</p>
           </div>
           <div>
-            <table class="tutuTable">
+            <table className="tutuTable">
               <tr>
                 <td>
                   <Trial7d />

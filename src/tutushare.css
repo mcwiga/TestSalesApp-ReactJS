@@ -47,3 +47,35 @@ table.tutuTable {
   border-spacing: 40px;
   border-collapse: separate;
 }
+
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100 !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+.modal-box {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 70%;
+  width: 60%;
+  overflow-y: auto;
+  background-color: #212529;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  z-index: 101;
+  padding: 40px;
+}
