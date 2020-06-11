@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./tutushare.css";
 import NavBar from "./components/tutuNavbar/navbar";
 import Trial7d from "./components/sevenDayTrial/trial7d";
+import CookieButton from "./components/Cookie/Cookie";
+import Cookies from 'js-cookie'
 
 class App extends Component {
   state = {
@@ -9,6 +11,7 @@ class App extends Component {
   };
 
   render() {
+    var welcome = <h1>Welcome to Tutu share {Cookies.get("email")}</h1>
     return (
       <React.Fragment>
         <div className="App body-tutu">
@@ -16,7 +19,7 @@ class App extends Component {
             <NavBar />
           </div>
           <div className="header-tutu">
-            <h1>Welcome to TutuShare</h1>
+            {welcome}
             <p>Hello world</p>
           </div>
           <div>
@@ -31,6 +34,7 @@ class App extends Component {
               </tr>
             </table>
           </div>
+          <div><CookieButton/></div>
           <div className="main-tutu">
             <h5>Paragraph1</h5>
             <p>

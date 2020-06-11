@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ContactForm from "./../contactForm";
 import TrialModel from "./sevenDayModal";
 
+
 class Trial7d extends Component {
   handleBtnFreeTrial() {
     console.log("Handle Button");
@@ -10,18 +11,21 @@ class Trial7d extends Component {
   openModel() {
     console.log("Button Clicked");
   }
+  
 
   render() {
-    return (
+      return (
       <div>
         <button onClick={this.openModel} className="btn-tutushare btn-sm">
-          Free 7 Day Trial
+          Free 7 Day Trial 
         </button>
         <TrialModel>
           <ContactForm></ContactForm>
         </TrialModel>
       </div>
     );
+    
+    
   }
 }
 

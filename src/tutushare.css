@@ -25,6 +25,7 @@ h5 {
   color: #ee5d17;
 }
 
+
 p {
   font-family: Monsteratt;
   font-size: medium;
@@ -78,4 +79,17 @@ table.tutuTable {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
   z-index: 101;
   padding: 40px;
+}
+
+.btn-tutu-cookie {
+  padding: 1.5rem 2.5rem;
+  background-color: #ebb5b3;
+  color: #ee5d17;
+  margin-left: 35rem;
+  border-radius: 50%;
+}
+.btn-tutu-cookie:hover{
+  color: #fff;
+  background-color: #f33211;
+  border-color: #fff;
 }
