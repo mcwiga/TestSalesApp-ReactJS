@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import "./tutushare.css";
 import NavBar from "./components/tutuNavbar/navbar";
-import Trial7d from "./components/sevenDayTrial/trial7d";
-import Pricing_table from "./components/Pricing-table/Pricing-table";
+import Pricingtable from "./components/Pricing-table/Pricing-table";
 
 class App extends Component {
   state = {
     sideDrawerOpen: false,
   };
-
+  freeTrial() {
+    console.log("free Trial Clicked");
+  }
   render() {
     return (
       <React.Fragment>
@@ -16,25 +17,13 @@ class App extends Component {
           <div>
             <NavBar />
           </div>
-          
+
           <div className="header-tutu">
             <h1>Welcome to TutuShare</h1>
             <p>Hello world</p>
           </div>
           <div>
-            <table class="tutuTable">
-            <div>
-            <Pricing_table/>
-          </div>
-              <tr>
-                <td>
-                  <Trial7d />
-                </td>
-                <td>
-                  <Trial7d />
-                </td>
-              </tr>
-            </table>
+            <Pricingtable onClick={() => this.freeTrial()} />
           </div>
           <div className="main-tutu">
             <h5>Paragraph1</h5>
