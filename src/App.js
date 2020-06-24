@@ -1,14 +1,53 @@
 import React, { Component } from "react";
+import { observer } from "mobx-react";
+import UserStore from "./components/stores/userStore";
+import "./App.css";
 import "./tutushare.css";
 import NavBar from "./components/tutuNavbar/navbar";
 import Pricingtable from "./components/Pricing-table/Pricing-table";
+import SignUpModal from "./components/sevenDayModal";
 
 class App extends Component {
   state = {
-    sideDrawerOpen: false,
+    showFreeTrial: false,
+    username: "",
   };
-  freeTrial() {
-    console.log("free Trial Clicked");
+
+  async componentDidMount() {
+    try {
+      let res = await fetch("/isLoggedIn", {
+        method: "post",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+      let result = await res.json();
+      console.log("Got isLoggedIn resu1t: " + result.success);
+      if (result && result.success) {
+        console.log(
+          "Got isLoggedIn Success adding UserStore " + result.username
+        );
+        UserStore.loading = false;
+        UserStore.isLoggedIn = true;
+        UserStore.username = result.username;
+      } else {
+        console.log("Got isLoggedIn Failed");
+        UserStore.loading = false;
+        UserStore.isLoggedIn = false;
+      }
+    } catch (e) {
+      console.log("Got isLoggedIn catch " + e);
+      UserStore.loading = false;
+      UserStore.isLoggedIn = false;
+    }
+  }
+
+  closeFreeTrialForm() {
+    this.setState({ showFreeTrial: false });
+  }
+  openFreeTrialForm() {
+    this.setState({ showFreeTrial: true });
   }
   render() {
     return (
@@ -20,10 +59,17 @@ class App extends Component {
 
           <div className="header-tutu">
             <h1>Welcome to TutuShare</h1>
-            <p>Hello world</p>
+            <p>Welcome {UserStore.username}</p>
           </div>
           <div>
-            <Pricingtable onClick={() => this.freeTrial()} />
+            <SignUpModal
+              showForm={this.state.showFreeTrial}
+              onClose={() => this.closeFreeTrialForm()}
+            />
+          </div>
+          <div>
+            <Pricingtable onClick={() => this.openFreeTrialForm()} />
+            <Pricingtable onClick={() => this.openFreeTrialForm()} />
           </div>
           <div className="main-tutu">
             <h5>Paragraph1</h5>
@@ -82,5 +128,4 @@ class App extends Component {
     );
   }
 }
-
-export default App;
+export default observer(App);

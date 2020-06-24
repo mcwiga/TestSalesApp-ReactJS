@@ -5,12 +5,14 @@ export default () => {
     <section className="page-section" id="contact">
       <div className="container">
         <div className="text-center">
-          <h2 className="section-heading text-uppercase">Try our Free Trial</h2>
+          <h2 className="section-heading text-uppercase">
+            Try our Free Trial Now
+          </h2>
           <h3 className="section-subheading text-muted">
             Try our 7 day free trial!!
           </h3>
         </div>
-        <form id="contactForm" name="sentMessage" novalidate="novalidate">
+        <form id="contactForm" name="sentMessage">
           <div className="row align-items-stretch mb-5">
             <div className="col-md-6">
               <div className="form-group">
@@ -38,8 +40,8 @@ export default () => {
               <div className="form-group mb-md-0">
                 <input
                   className="form-control"
-                  id="phone"
-                  type="tel"
+                  id="password"
+                  type="password"
                   placeholder="Your Password *"
                   required="required"
                   data-validation-required-message="Please enter a password"
@@ -52,10 +54,10 @@ export default () => {
             <div id="success"></div>
             <button
               className="btn btn-primary btn-xl text-uppercase"
-              id="sendMessageButton"
+              id="registerButton"
               type="submit"
             >
-              Send Message
+              Register
             </button>
           </div>
         </form>
