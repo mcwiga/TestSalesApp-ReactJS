@@ -1,12 +1,67 @@
 import React, { Component } from "react";
+import { observer } from "mobx-react";
+import UserStore from "./components/stores/userStore";
+import "./App.css";
 import "./tutushare.css";
 import NavBar from "./components/tutuNavbar/navbar";
-import Trial7d from "./components/sevenDayTrial/trial7d";
+import Pricingtable from "./components/Pricing-table/Pricing-table";
+import SignUpModal from "./components/sevenDayModal";
+import LogoutButton from "./components/LogoutButton"
 
 class App extends Component {
+
   state = {
-    sideDrawerOpen: false,
+    showFreeTrial: false,
+    username: "",
+    modalType: 0,
   };
+
+  async componentDidMount() {
+    try {
+      let res = await fetch("/isLoggedIn", {
+        method: "post",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+      let result = await res.json();
+      console.log("Got isLoggedIn resu1t: " + result.success);
+      if (result && result.success) {
+        console.log(
+          "Got isLoggedIn Success adding UserStore " + result.username
+        );
+        UserStore.loading = false;
+        UserStore.isLoggedIn = true;
+        UserStore.username = result.username;
+      } else {
+        console.log("Got isLoggedIn Failed");
+        UserStore.loading = false;
+        UserStore.isLoggedIn = false;
+      }
+    } catch (e) {
+      console.log("Got isLoggedIn catch " + e);
+      UserStore.loading = false;
+      UserStore.isLoggedIn = false;
+    }
+  }
+
+  closeFreeTrialForm = () => {
+    this.setState({ showFreeTrial: false });
+  }
+  openFreeTrialForm = () => {
+    this.setState({ showFreeTrial: true });
+  }
+
+  openLoginForm = () => {
+    this.setState({modalType: 1});
+    this.openFreeTrialForm();
+  }
+
+  openRegisterForm = () => {
+    this.setState({modalType: 0});
+    this.openFreeTrialForm();
+  }
 
   render() {
     return (
@@ -15,21 +70,30 @@ class App extends Component {
           <div>
             <NavBar />
           </div>
+
           <div className="header-tutu">
             <h1>Welcome to TutuShare</h1>
-            <p>Hello world</p>
+            <p>Welcome {UserStore.username}</p>
+
+            
           </div>
           <div>
-            <table className="tutuTable">
-              <tr>
-                <td>
-                  <Trial7d />
-                </td>
-                <td>
-                  <Trial7d />
-                </td>
-              </tr>
-            </table>
+          <LogoutButton 
+          showForm={this.openLoginForm}
+          onClose={this.closeFreeTrialForm}
+          />
+          </div>
+          
+          <div>
+            <SignUpModal
+              type={this.state.modalType}
+              showForm={this.state.showFreeTrial}
+              onClose={this.closeFreeTrialForm}
+            />
+          </div>
+          <div>
+            <Pricingtable onClick={() => this.openRegisterForm()} />
+            
           </div>
           <div className="main-tutu">
             <h5>Paragraph1</h5>
@@ -88,5 +152,4 @@ class App extends Component {
     );
   }
 }
-
-export default App;
+export default observer(App);

@@ -56,11 +56,11 @@ h6 {
   }
 }
 ::-moz-selection {
-  background: #ee5d17;
+  background: #ffcccc;
   text-shadow: none;
 }
 ::selection {
-  background: #ee5d17;
+  background: #ffcccc;
   text-shadow: none;
 }
 img::-moz-selection {
@@ -650,5 +650,5 @@ ul.social-buttons li a {
 ul.social-buttons li a:active,
 ul.social-buttons li a:focus,
 ul.social-buttons li a:hover {
-  background-color: ##ee5d17;
+  background-color: #ee5d17;
 }
