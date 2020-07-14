@@ -3,9 +3,12 @@ import { observer } from "mobx-react";
 import UserStore from "./components/stores/userStore";
 import "./App.css";
 import "./tutushare.css";
+import "./css/global.css";
 import NavBar from "./components/tutuNavbar/navbar";
+import PricingPlans from "./components/payment-plans/plans";
 import Pricingtable from "./components/Pricing-table/Pricing-table";
 import SignUpModal from "./components/sevenDayModal";
+import CheckoutForm from "./components/CheckoutForm";
 
 class App extends Component {
   state = {
@@ -14,6 +17,10 @@ class App extends Component {
   };
 
   async componentDidMount() {
+    const script = document.createElement("script");
+    script.src = "./script.js";
+    script.async = true;
+    document.body.appendChild(script);
     try {
       let res = await fetch("/isLoggedIn", {
         method: "post",
@@ -68,8 +75,30 @@ class App extends Component {
             />
           </div>
           <div>
-            <Pricingtable onClick={() => this.openFreeTrialForm()} />
-            <Pricingtable onClick={() => this.openFreeTrialForm()} />
+            <div className="item">
+              <Pricingtable
+                onClick={() => this.openFreeTrialForm()}
+                buttonText={"Try Now"}
+                title={"7-Day Free Trial"}
+                priceText={"£0/Month"}
+              />
+            </div>
+            <div className="item">
+              <Pricingtable
+                onClick={() => this.openFreeTrialForm()}
+                buttonText={"Basic Plan"}
+                title={"Starter Plan"}
+                priceText={"£29.99/Month"}
+              />
+            </div>
+            <div className="item">
+              <Pricingtable
+                onClick={() => this.openFreeTrialForm()}
+                buttonText={"Premium Plan"}
+                title={"Premium Plan"}
+                priceText={"£59.99/Month"}
+              />
+            </div>
           </div>
           <div className="main-tutu">
             <h5>Paragraph1</h5>

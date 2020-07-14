@@ -7,9 +7,9 @@ class Pricing_table extends React.Component {
       <PricingTable highlightColor="#f45336">
         <PricingSlot
           onClick={() => this.props.onClick()}
-          buttonText="TRY IT FREE"
-          title="FREE"
-          priceText="$0/month"
+          buttonText={this.props.buttonText}
+          title={this.props.title}
+          priceText={this.props.priceText}
         >
           <PricingDetail>
             {" "}

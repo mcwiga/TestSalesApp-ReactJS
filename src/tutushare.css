@@ -30,7 +30,10 @@ p {
   font-size: medium;
   color: grey;
 }
-
+.item {
+  display: inline-block;
+  vertical-align: middle;
+}
 .body-tutu {
   background-color: #eeeeee;
 }

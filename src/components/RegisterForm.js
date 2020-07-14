@@ -29,7 +29,6 @@ class LoginForm extends React.Component {
   }
 
   async doRegister() {
-    console.log("doRegister");
     if (!this.state.username) {
       console.log("Username Required");
       return;
@@ -63,6 +62,7 @@ class LoginForm extends React.Component {
       if (result && result.success) {
         UserStore.isLoggedIn = true;
         UserStore.username = result.username;
+        alert(result.msg);
       } else if (result && result.success === false) {
         this.resetForm();
         alert(result.msg);
